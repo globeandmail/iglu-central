@@ -1,0 +1,44 @@
+{
+    "$schema": "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#",
+    "description": "Snowplow Google BigQuery storage configuration",
+    "self": {
+        "vendor": "com.snowplowanalytics.snowplow.storage",
+        "name": "bigquery_config",
+        "format": "jsonschema",
+        "version": "1-0-0"
+    },
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "Human-readable storage target name, used only for logging",
+            "type": "string"
+        },
+        "id": {
+            "description": "Machine-readable unique identificator",
+            "type": "string",
+            "format": "uuid"
+        },
+        "projectId": {
+            "description": "GCP project id",
+            "type": "string"
+        },
+        "datasetId": {
+            "description": "BigQuery dataset id",
+            "type": "string"
+        },
+        "tableId": {
+            "description": "BigQuery table id",
+            "type": "string"
+        },
+        "typesSubscription": {
+            "description": "Google PubSub topic for sending observed types",
+            "type": "string"
+        },
+        "purpose": {
+            "type": "string",
+            "enum": ["ENRICHED_EVENTS"]
+        }
+    },
+    "additionalProperties": false,
+    "required": ["name", "id", "datasetId", "tableId", "typesSubscription", "purpose"]
+}
